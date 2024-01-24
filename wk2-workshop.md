@@ -22,3 +22,41 @@ The average daily returns of the S&P index during this period is
 
 The standard deviation of the daily returns of the S&P index during this
 period is 1.2219427.
+
+## s&y prices
+
+``` r
+library(tidyverse)
+```
+
+    ## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+    ## ✔ dplyr     1.1.2     ✔ readr     2.1.4
+    ## ✔ forcats   1.0.0     ✔ stringr   1.5.0
+    ## ✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+    ## ✔ lubridate 1.9.2     ✔ tidyr     1.3.0
+    ## ✔ purrr     1.0.2     
+    ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ## ✖ dplyr::filter() masks stats::filter()
+    ## ✖ dplyr::lag()    masks stats::lag()
+    ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
+
+``` r
+ggplot(data = df, aes(x = date, y = SPY_prices)) +
+  geom_line()
+```
+
+![](wk2-workshop_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+
+## s&p yearly returns
+
+``` r
+library(lubridate)
+df = df %>%
+  mutate(year = year(date)) %>%
+  group_by(year) %>%
+  summarise(yr_return = sum(SPY_returns)*100)
+ggplot(data = df, aes(x = year, y = yr_return)) +
+  geom_col()
+```
+
+![](wk2-workshop_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->

@@ -24,3 +24,21 @@ The cumulative returns of the S&P index during this period is `r sum(df$SPY_retu
 The average daily returns of the S&P index during this period is `r mean(df$SPY_returns)*100`.
 
 The standard deviation of the daily returns of the S&P index during this period is `r sd(df$SPY_returns)*100`.
+
+## s&y prices
+```{r}
+library(tidyverse)
+ggplot(data = df, aes(x = date, y = SPY_prices)) +
+  geom_line()
+```
+
+## s&p yearly returns
+```{r}
+library(lubridate)
+df = df %>%
+  mutate(year = year(date)) %>%
+  group_by(year) %>%
+  summarise(yr_return = sum(SPY_returns)*100)
+ggplot(data = df, aes(x = year, y = yr_return)) +
+  geom_col()
+```
