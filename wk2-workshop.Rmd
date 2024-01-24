@@ -15,5 +15,6 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-"Hello"
+df = readRDS("data/wk2_stocks.rds")
+str(df)
 ```
