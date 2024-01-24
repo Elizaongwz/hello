@@ -1,0 +1,14 @@
+---
+title: "Week 2 DSE3101"
+author: "Eliza Ong"
+date: "2024-01-24"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+"Hello"
+```
